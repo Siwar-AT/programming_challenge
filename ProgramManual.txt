@@ -1,0 +1,89 @@
+-------------------------------------
+ Conditional Probability Calculator
+-------------------------------------
+
+*Main Program Name*: main.py
+
+*Purpose*: Calculate conditional probability to investigate the potential link between the companies software engineers
+           have worked for and their programming language skills.
+
+*Prerequisites*: Python 3.12.3
+
+*Python Standard Library Modules Used*: json, subprocess, shutil, collections, and pathlib.
+
+*External Packages*: None used
+
+*File Handling*: This program assumes that all specified input files are in JSON format, and that all input files and directories
+                 are located in the current working directory. It also produces files in JSON format and places all output 
+                 files and directories in the current working directory.  
+
+*User Input*: None required
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+*Program Workflow*: -{ Task(1) }-
+                     Accomplished by '1_extracting_profiles.py'
+                     The program begins by unpacking a compressed tar archive in order to extract the directory
+                     containing the LinkedIn profile files.
+
+
+                    -{ Task(2) }-
+                     The program filters profiles based on the number of companies and programming languages.
+                     This process consists of three steps: two filtering steps and an evaluation step. 
+
+                         -{ Task(2)/Step(1) }-
+                             Accomplished by '2_filtering_eligible_profiles.py'
+                             The profiles are filtered to exclude those with zero programming language skills 
+                             and experience at less than 3 companies. 
+                             This step produces the directory containing the profiles to be used for subsequent tasks.   
+
+                         -{ Task(2)/Step(2) }-
+                             Accomplished by '3_filtering_ineligible_profiles.py'
+                             The profiles are filtered to only include those with zero programming language skills 
+                             or experience at less than 3 companies.
+
+                         -{ Task(2)/Step(3) }-
+                             Accomplished by '4_validation_of_filtering.py'
+                             The filtering process is validated by comparing the sum of the number of filtered profiles 
+                             from Step(a) and Step(b) to the total number of original profiles.
+
+                        *Note*: Steps(2) and (3) are not crucial to the main program, and the main script could be modified to
+                        exclude them, as they do not produce output necessary for following tasks. 
+
+
+
+                    -{ Task(3) }-
+                     The program processes the companies listed in the profiles by performing necessary operations.
+                     This process consists of two steps: extraction and counting. 
+
+                         -{ Task(2)/Step(1) }-
+                             Accomplished by '5_company_extraction.py' 
+                             The list of companies is extracted from each profile. All company lists are compiled into a 
+                             single list, which is subsequently written to an output file. 
+
+
+                         -{ Task(2)/Step(2) }-
+                             Accomplished by '6_company_occurrences.py'
+                             The occurrences of each company across all profiles are counted. All occurrence counts are 
+                             compiled into a dictionary, which is subsequently written to an output file. 
+
+                    
+
+                    -{ Task(4) }-
+                     Accomplished by '7_language_company_cooccurrences.py'
+                     The program counts the co-occurrences of each programming language with each company. All co-occurrence
+                     counts are compiled into a dictionary, which is subsequently written to an output file.
+
+
+
+                    -{ Task(5) }-
+                     Accomplished by '8_conditional_probability.py'
+                     The program calculates 'P(language|company)' which is the conditional probability of each programming 
+                     language with each company.
+                     The probability for each language-company pair is calculated by dividing their co-occurrence count by 
+                     the occurrence count of the company. All calculated probabilities are printed to the screen and compiled
+                     into a dictionary, which is subsequently written to an output file.
+
+
+-------------------------------------------------------------------------------------------------------------------------------
